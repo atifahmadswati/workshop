@@ -9,17 +9,19 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Flutter Workshop"),
+        title: const Text("Flutter Workshop"),
       ),
       body: Container(
+        width: MediaQuery.of(context).size.width,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>AddNewEmployerScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>const AddNewEmployerScreen()));
               },
-              child: Text(
+              child: const Text(
                 "Add New Employer",
               ),
             ),
@@ -28,7 +30,7 @@ class FirstScreen extends StatelessWidget {
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>GetAllEmployerScreen()));
 
               },
-              child: Text(
+              child: const Text(
                 "Get All Employer",
               ),
             )

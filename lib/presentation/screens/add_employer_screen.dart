@@ -1,9 +1,11 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'get_all_employer_screen.dart';
 
 class AddNewEmployerScreen extends StatefulWidget {
-  AddNewEmployerScreen({Key? key}) : super(key: key);
+  const AddNewEmployerScreen({Key? key}) : super(key: key);
 
   @override
   State<AddNewEmployerScreen> createState() => _AddNewEmployerScreenState();
@@ -47,7 +49,7 @@ class _AddNewEmployerScreenState extends State<AddNewEmployerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add New Employer"),
+        title: const Text("Add New Employer"),
       ),
       body: Form(
         key: formKey,
@@ -55,33 +57,36 @@ class _AddNewEmployerScreenState extends State<AddNewEmployerScreen> {
           children: [
             TextFormField(
               controller: idTextEditingController,
-              decoration: InputDecoration(labelText: "Id"),
+              decoration: const InputDecoration(labelText: "Id"),
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   return "Please enter valid id";
                 }
+                return null;
               },
             ),
             TextFormField(
               controller: organizationNameTextEditingController,
-              decoration: InputDecoration(labelText: "Organization Name"),
+              decoration: const InputDecoration(labelText: "Organization Name"),
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   return "Please enter valid Organization Name";
                 }
+                return null;
               },
             ),
             TextFormField(
               controller: emailTextEditingController,
-              decoration: InputDecoration(labelText: "Email"),
+              decoration: const InputDecoration(labelText: "Email"),
               validator: (val) {
                 if (val == null || val.isEmpty) {
                   return "Please enter valid Email";
                 }
+                return null;
               },
             ),
             isLoading
-                ? CircularProgressIndicator()
+                ? const CircularProgressIndicator()
                 : TextButton(
                     onPressed: () async {
                       if (formKey.currentState!.validate()) {
@@ -99,15 +104,15 @@ class _AddNewEmployerScreenState extends State<AddNewEmployerScreen> {
                                       GetAllEmployerScreen()));
                         } else {
                           setState(() {
-                            isLoading = true;
+                            isLoading = false;
                           });
 
                           ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("Try Again")));
+                              const SnackBar(content: Text("Try Again")));
                         }
                       }
                     },
-                    child: Text(
+                    child: const Text(
                       "Add",
                     ),
                   ),
